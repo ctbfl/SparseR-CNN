@@ -21,7 +21,7 @@ import torch.nn.functional as F
 
 from detectron2.modeling.poolers import ROIPooler, cat
 from detectron2.structures import Boxes
-
+from .hyperbolic_layer import Hyperbolic_Lorentz_Prototype_Linear_Layer, Hyperbolic_Lorentz_Prototype_Distance_Layer
 
 _DEFAULT_SCALE_CLAMP = math.log(100000.0 / 16)
 
@@ -160,9 +160,9 @@ class RCNNHead(nn.Module):
         # pred.
         self.use_focal = cfg.MODEL.SparseRCNN.USE_FOCAL
         if self.use_focal:
-            self.class_logits = nn.Linear(d_model, num_classes)
+            self.class_logits = Hyperbolic_Lorentz_Prototype_Distance_Layer(d_model, num_classes)
         else:
-            self.class_logits = nn.Linear(d_model, num_classes + 1)
+            self.class_logits = Hyperbolic_Lorentz_Prototype_Distance_Layer(d_model, num_classes + 1)
         self.bboxes_delta = nn.Linear(d_model, 4)
         self.scale_clamp = scale_clamp
         self.bbox_weights = bbox_weights
