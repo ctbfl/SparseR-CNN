@@ -46,3 +46,6 @@ _darcs
 !/datasets/*.*
 /projects/*/datasets
 /models
+
+debug/
+debug*

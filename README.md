@@ -66,8 +66,7 @@ ln -s /path_to_coco_dataset/val2017 datasets/coco/val2017
 
 3. Train SparseR-CNN
 ```
-python projects/SparseRCNN/train_net.py --num-gpus 8 \
-    --config-file projects/SparseRCNN/configs/sparsercnn.res50.100pro.3x.yaml
+python projects/SparseRCNN/train_net.py --num-gpus 8 --config-file projects/SparseRCNN/configs/sparsercnn.res50.100pro.3x.yaml
 ```
 
 4. Evaluate SparseR-CNN
